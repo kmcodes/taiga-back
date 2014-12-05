@@ -6,7 +6,7 @@
 {% block head %}
     <h1>Wiki Page {{ snapshot.slug }} updated</h1>
     <p>Hello {{ user.get_full_name() }}, <br> {{ changer.get_full_name() }} has updated a wiki page on {{ project.name }}</p>
-    <a class="button" href="#" title="See wiki page in Taiga">See Wiki</a>
+    <a class="button" href="{{ final_url }}" title="See wiki page in Taiga">See Wiki</a>
 {% endblock %}
 
 
