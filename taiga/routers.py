@@ -89,6 +89,9 @@ router.register(r"tasks/attachments", TaskAttachmentViewSet, base_name="task-att
 router.register(r"issues/attachments", IssueAttachmentViewSet, base_name="issue-attachments")
 router.register(r"wiki/attachments", WikiAttachmentViewSet, base_name="wiki-attachments")
 
+# Webhooks
+from taiga.webhooks.api import WebhookViewSet
+router.register(r"webhooks", WebhookViewSet, base_name="webhooks")
 
 # History & Components
 from taiga.projects.history.api import UserStoryHistory

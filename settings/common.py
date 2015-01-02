@@ -197,6 +197,7 @@ INSTALLED_APPS = [
     "taiga.hooks.github",
     "taiga.hooks.gitlab",
     "taiga.hooks.bitbucket",
+    "taiga.webhooks",
 
     "rest_framework",
     "djmail",
@@ -361,6 +362,8 @@ PROJECT_MODULES_CONFIGURATORS = {
 
 BITBUCKET_VALID_ORIGIN_IPS = ["131.103.20.165", "131.103.20.166"]
 GITLAB_VALID_ORIGIN_IPS = []
+
+WEBHOOKS_ENABLED = False
 
 # NOTE: DON'T INSERT MORE SETTINGS AFTER THIS LINE
 TEST_RUNNER="django.test.runner.DiscoverRunner"

@@ -205,6 +205,28 @@ class IsProjectMemberFilterBackend(FilterBackend):
         return super().filter_queryset(request, queryset.distinct(), view)
 
 
+class IsProjectAdminFilterBackend(FilterBackend):
+    def filter_queryset(self, request, queryset, view):
+        project_id = None
+        if hasattr(view, "filter_fields") and "project" in view.filter_fields:
+            project_id = request.QUERY_PARAMS.get("project", None)
+
+        if request.user.is_authenticated() and request.user.is_superuser:
+            queryset = queryset
+        elif request.user.is_authenticated():
+            memberships_qs = Membership.objects.filter(user=request.user, is_owner=True)
+            if project_id:
+                memberships_qs = memberships_qs.filter(project_id=project_id)
+
+            projects_list = [membership.project_id for membership in memberships_qs]
+
+            queryset = queryset.filter(project_id__in=projects_list)
+        else:
+            queryset = queryset.none()
+
+        return super().filter_queryset(request, queryset.distinct(), view)
+
+
 class TagsFilter(FilterBackend):
     def __init__(self, filter_name='tags'):
         self.filter_name = filter_name

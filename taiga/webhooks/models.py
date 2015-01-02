@@ -14,20 +14,20 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from .development import *
+from django.db import models
+from django.utils.translation import ugettext_lazy as _
 
-SKIP_SOUTH_TESTS = True
-SOUTH_TESTS_MIGRATE = False
-CELERY_ALWAYS_EAGER = True
-CELERY_ENABLED = False
 
-MEDIA_ROOT = "/tmp"
+class Webhook(models.Model):
+    project = models.ForeignKey("projects.Project", null=False, blank=False,
+                                related_name="webhooks")
+    url = models.URLField(null=False, blank=False, verbose_name=_("URL"))
+    key = models.TextField(null=False, blank=False, verbose_name=_("secret key"))
 
-EMAIL_BACKEND = "django.core.mail.backends.locmem.EmailBackend"
-INSTALLED_APPS = INSTALLED_APPS + ["tests"]
 
-REST_FRAMEWORK["DEFAULT_THROTTLE_RATES"] = {
-    "anon": None,
-    "user": None,
-    "import-mode": None
-}
+class WebhookLog(models.Model):
+    webhook = models.ForeignKey(Webhook, null=False, blank=False,
+                                related_name="logs")
+    url = models.URLField(null=False, blank=False, verbose_name=_("URL"))
+    status = models.IntegerField(null=False, blank=False, verbose_name=_("Status code"))
+    data = models.TextField(null=False, blank=False, verbose_name=_("Response data"))
