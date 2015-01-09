@@ -9,9 +9,6 @@
     "us_order"
 ] %}
 
-<tr>
-    <th colspan="2"><h2>Updates</h2></th>
-</tr>
 {% for field_name, values in changed_fields.items() %}
     {% if field_name not in excluded_fields %}
         {# POINTS #}
