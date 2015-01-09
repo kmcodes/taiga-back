@@ -401,32 +401,23 @@
         <tr>
             <td colspan="2" valign="top" class="bodyContent">
                 <h3>Comment</h3>
-                <p>Test</p>
+                <p>{{ feedback_entry.comment }}</p>
             </td>
         </tr>
 
+        {% if extra %}
         <tr>
-            <td valign="top" class="bodyContent">
-                <strong>Extra:</strong>
-            </td>
-        </tr>
-        <tr>
-            <td valign="top" class="bodyContent">
+            <td valign="top" valign="top" class="bodyContent">
+                <h3>Extra:</h3>
                 <dl>
-
-                    <dt>HTTP_USER_AGENT</dt>
-                    <dd>Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36</dd>
-
-                    <dt>HTTP_HOST</dt>
-                    <dd>localhost:8000</dd>
-
-                    <dt>HTTP_REFERER</dt>
-                    <dd>http://localhost:9001/project/user2-project-example-2/backlog</dd>
-
+                    {% for k, v in extra.items() %}
+                        <dt>{{ k }}</dt>
+                        <dd>{{ v }}</dd>
+                    {% endfor %}
                 </dl>
             </td>
         </tr>
-
+        {% endif %}
     </table>
 
                                             </td>
