@@ -361,10 +361,9 @@
                                 	<!-- BEGIN HEADER // -->
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateHeader">
                                         <tr>
-                                            <td valign="top" class="headerContent" background="../images/top-bg-hero.png" style="background-position: center center">
+                                            <td valign="top" class="headerContent" background="{{ static("emails/top-bg-hero.png") }}" style="background-position: center center">
                                                 <a href="{{ home_url }}" title="{{ home_url_name }}">
-                                                    <!-- TODO CHANGE LOGO FOR THE NEW ONE -->
-                                                    <img src="{{ static("emails/email-logo.png") }}" alt="Taiga" id="headerImage" />
+                                                    <img src="{{ static("emails/logo.png") }}" alt="Taiga" id="headerImage" />
                                                 </a>
                                                 <h1>You have been Taigatized!</h1>
                                                 <p>Welcome to Taiga, an Open Source, Agile Project Management Tool</p>
