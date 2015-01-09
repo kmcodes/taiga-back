@@ -1,7 +1,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>[Taiga] Jesús Espino updated the US #1680 "Rediseño de emails"</title>
+        <title>Taiga</title>
         <style type="text/css">
             /* /\/\/\/\/\/\/\/\/ CLIENT-SPECIFIC STYLES /\/\/\/\/\/\/\/\/ */
             #outlook a{padding:0;} /* Force Outlook to provide a "view in browser" message */
@@ -26,13 +26,6 @@
 
             body, #bodyTable{
                 background-color:#f5f5f5;
-            }
-
-            /**
-            * @section background style
-            */
-            #bodyCell{
-                border-top:10px solid #555555;
             }
 
             /**
@@ -126,7 +119,7 @@
 
             .headerContent {
                 text-align: center;
-                color:#cdcdcd !important;
+                color:#b8b8b8 !important;
                 font-family: 'Open Sans', Arial, Helvetica;
                 font-size:14px;
                 margin-bottom:16px;
@@ -397,15 +390,13 @@
                                     <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateHeader">
                                         <tr>
                                             <td valign="top" class="headerContent">
-                                                <!-- [TODO: SET REAL PICTURES URL] -->
-                                                <img src="../images/top-bg-update.png" />
-                                                <a href="http://localhost:9001/"
-                                                   title="Taiga">
-                                                    <img src="../images/logo-color.png" id="headerImage" alt="Taiga logo" />
+                                                <img src="{{ static("emails/top-bg-update.png") }}" />
+                                                <a href="{{ home_url }}" title="{{ home_url_name }}">
+                                                    <img src="{{ static("emails/logo-color.png") }}" id="headerImage" alt="Taiga logo" />
                                                 </a>
 
     <h1>Feedback</h1>
-    <p>Taiga has received feedback from admin [admin@admin.com]</p>
+    <p>Taiga has received feedback from {{ feedback_entry.full_name }} <{{ feedback_entry.email }}></p>
     <table border="0" cellpadding="0" cellspacing="0" width="100%" id="templateBody">
         <tr>
             <td colspan="2" valign="top" class="bodyContent">
