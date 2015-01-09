@@ -198,8 +198,8 @@ def _make_template_mail(name:str):
     instance for specified name, and return an instance
     of it.
     """
-    cls = type("TemplateMail",
-               (template_mail.TemplateMail,),
+    cls = type("InlineCSSTemplateMail",
+               (template_mail.InlineCSSTemplateMail,),
                {"name": name})
 
     return cls()
